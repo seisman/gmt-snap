@@ -1,0 +1,21 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: snapcore/action-build@v1.0.7
+      id: snapcraft
+    - run: |
+        sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+    - uses: snapcore/action-publish@v1.0.2
+      with:
+        store_login: ${{ secrets.STORE_LOGIN }}
+        snap: ${{ steps.snapcraft.outputs.snap }}
+        release: edge

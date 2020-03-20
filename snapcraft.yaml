@@ -1,0 +1,59 @@
+name: gmt-test
+version: 6.1.1
+summary: Generic Mapping Tools
+description: |
+  GMT is an open-source collection of command-line tools for manipulating geographic
+  and Cartesian data sets (including filtering, trend fitting, gridding, projecting, etc.)
+  and producing high-quality illustrations ranging from simple x–y plots via contour maps
+  to artificially illuminated surfaces and 3D perspective views.
+  It supports many map projections and transformations and includes supporting data
+  such as coastlines, rivers, and political boundaries and optionally country polygons.
+license: LGPL-3.0
+
+confinement: strict
+base: core18
+architectures:
+  - build-on: [s390x, ppc64el, arm64, armhf, amd64]
+    run-on: [s390x, ppc64el, arm64, armhf, amd64]
+
+parts:
+  gmt-test:
+    plugin: cmake
+    configflags:
+      - "-DGMT_ENABLE_OPENMP=TRUE"
+      - "-DGMT_USE_THREADS=TRUE"
+    source-type: tar
+    source: https://github.com/GenericMappingTools/gmt/releases/download/6.1.1/gmt-6.1.1-src.tar.gz
+    build-packages:
+    - gcc
+    # required dependencies
+    - libnetcdf-dev
+    - libcurl4-gnutls-dev
+    # optional dependencies
+    - libblas-dev
+    - libfftw3-dev
+    - libgdal-dev
+    - liblapack-dev
+    - libpcre3-dev
+    - libglib2.0-dev
+    stage-packages:
+    # required dependencies
+    - libnetcdf-dev
+    - libcurl4-gnutls-dev
+    # optional dependencies
+    - libblas-dev
+    - libfftw3-dev
+    - libgdal-dev
+    - liblapack-dev
+    - libpcre3-dev
+    - libglib2.0-dev
+    # runtime dependencies
+    - ghostscript
+    - xdg-utils
+    - gdal-bin
+    - graphicsmagick
+    - ffmpeg
+
+apps:
+  gmt-test:
+    command: gmt
