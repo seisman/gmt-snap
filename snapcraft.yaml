@@ -29,6 +29,8 @@ parts:
     # required dependencies
     - libnetcdf-dev
     - libcurl4-gnutls-dev
+    - gmt-dcw
+    - gmt-gshhg
     # optional dependencies
     - libblas-dev
     - libfftw3-dev
@@ -40,6 +42,8 @@ parts:
     # required dependencies
     - libnetcdf-dev
     - libcurl4-gnutls-dev
+    - gmt-dcw
+    - gmt-gshhg
     # optional dependencies
     - libblas-dev
     - libfftw3-dev
