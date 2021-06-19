@@ -1,6 +1,7 @@
 name: gmt-test
+title: The Generic Mapping Tools
 version: 6.1.1
-summary: Generic Mapping Tools
+summary: The Generic Mapping Tools
 description: |
   GMT is an open-source collection of command-line tools for manipulating geographic
   and Cartesian data sets (including filtering, trend fitting, gridding, projecting, etc.)
@@ -10,8 +11,9 @@ description: |
   such as coastlines, rivers, and political boundaries and optionally country polygons.
 license: LGPL-3.0
 
-confinement: strict
 base: core18
+confinement: strict
+grade: stable
 architectures:
   - build-on: [s390x, ppc64el, arm64, armhf, amd64]
     run-on: [s390x, ppc64el, arm64, armhf, amd64]
@@ -24,6 +26,7 @@ parts:
       - "-DGMT_USE_THREADS=TRUE"
     source-type: tar
     source: https://github.com/GenericMappingTools/gmt/releases/download/6.1.1/gmt-6.1.1-src.tar.gz
+    source-checksum: sha256/9706ffa858a98bb1b97162e3887aa03c6c746017a274951e94a6341a59efad12
     build-packages:
     - gcc
     # required dependencies
@@ -59,5 +62,5 @@ parts:
     - ffmpeg
 
 apps:
-  gmt-test:
+  gmt:
     command: gmt
