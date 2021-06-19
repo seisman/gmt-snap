@@ -13,7 +13,7 @@ jobs:
     - uses: snapcore/action-build@v1.0.7
       id: snapcraft
     - run: |
-        sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+        sudo snap install --dangerous --classic ${{ steps.snapcraft.outputs.snap }}
     - uses: snapcore/action-publish@v1.0.2
       with:
         store_login: ${{ secrets.STORE_LOGIN }}
