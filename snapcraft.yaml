@@ -12,7 +12,7 @@ description: |
 license: LGPL-3.0
 
 base: core18
-confinement: strict
+confinement: classic
 grade: stable
 architectures:
   - build-on: [s390x, ppc64el, arm64, armhf, amd64]
@@ -63,4 +63,4 @@ parts:
 
 apps:
   gmt:
-    command: gmt
+    command: bin/gmt
